@@ -1,4 +1,4 @@
-from jinja2 import Template, escape
+from jinja2 import Template  # , escape
 
 
 class Person:
@@ -27,6 +27,28 @@ x = Template(s)
 y = x.render(cities=cities)
 print(y)
 
-s = """https://www.youtube.com/watch?v=F63wc5nPdho&list=PLA0M1Bcd0w8wfmtElObQrBbZjY6XeA06U&index=2"""
-f = escape(s)
+# s = """https://www.youtube.com/watch?v=F63wc5nPdho&list=PLA0M1Bcd0w8wfmtElObQrBbZjY6XeA06U&index=2"""
+# f = escape(s)
+# print(f)
+
+person = [
+    {"name": "Никита", "age": 25},
+    {"name": "Володя", "age": 28},
+    {"name": "Ася", "age": 2},
+]
+
+s = """
+{%- macro pupil(x) -%}
+{%- for i in x %}
+{{i.name}}{{caller(i)}}
+{%- endfor -%}
+{%- endmacro -%}
+
+{% call(user) pupil(p) %}
+{{user.age}}
+{% endcall -%}
+
+"""
+t = Template(s)
+f = t.render(p=person)
 print(f)
