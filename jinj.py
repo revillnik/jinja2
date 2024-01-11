@@ -52,3 +52,13 @@ s = """
 t = Template(s)
 f = t.render(p=person)
 print(f)
+
+s1 = """Hello {{ cs[0].name | replace("и", "а")}}"""
+t1 = Template(s1)
+f1 = t1.render(cs=person)
+print(f1)
+
+s2 = """ Hello {% filter upper %} my friend {{cs2[0].name}} {% endfilter %} lernd of Python and another area of computer sciense"""
+t2 = Template(s2)
+f2 = t2.render(cs2=person)
+print(f2)
