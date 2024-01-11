@@ -1,4 +1,4 @@
-import jinja2
+from jinja2 import Template
 
 class Person:
 	def __init__(self, age, name):
