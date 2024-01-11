@@ -1,4 +1,4 @@
-from jinja2 import Template, FunctionLoader, Environment
+from jinja2 import Template, FunctionLoader, Environment, FileSystemLoader
 
 pupil = {"name": "Никита", "age": 20}
 
@@ -13,7 +13,6 @@ def load(x):
 lod = FunctionLoader(load)
 env = Environment(loader=lod)
 
-tm = env.get_template('1')
+tm = env.get_template("1")
 f = tm.render(c=pupil)
 print(f)
-
